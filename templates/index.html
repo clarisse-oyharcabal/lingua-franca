@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Lingua Franca</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+    <h1> Lingua Franca</h1>
+
+    <form method="POST">
+        <div class="container">
+            <div>
+                <label for="text">Texte à traduire :</label><br>
+                <textarea name="text" placeholder="Tapez ici...">{{ original_text }}</textarea>
+            </div>
+
+            <div>
+                <label for="result">Traduction :</label><br>
+                <textarea name="result" readonly placeholder="Résultat ici...">{{ translated_text }}</textarea>
+            </div>
+        </div>
+
+        <div class="options">
+            Langue source :
+            <select name="source">
+                <option value="auto" {% if source_lang == 'auto' %}selected{% endif %}>Auto</option>
+                <option value="en" {% if source_lang == 'en' %}selected{% endif %}>Anglais</option>
+                <option value="fr" {% if source_lang == 'fr' %}selected{% endif %}>Français</option>
+                <option value="es" {% if source_lang == 'es' %}selected{% endif %}>Espagnol</option>
+            </select>
+
+            Langue cible :
+            <select name="target">
+                <option value="en" {% if target_lang == 'en' %}selected{% endif %}>Anglais</option>
+                <option value="fr" {% if target_lang == 'fr' %}selected{% endif %}>Français</option>
+                <option value="es" {% if target_lang == 'es' %}selected{% endif %}>Espagnol</option>
+                <option value="ar" {% if target_lang == 'ar' %}selected{% endif %}>Arabe</option>
+            </select>
+        </div>
+
+        <button type="submit">Traduire</button>
+    </form>
+
+</body>
+</html>
