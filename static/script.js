@@ -29,4 +29,29 @@ textareas.forEach((ta) => {
     ta.addEventListener('mouseleave', () => {
         ta.style.boxShadow = 'inset 0 0 10px #00ffe0';
     });
+
+document.addEventListener('DOMContentLoaded', () => {
+  const createParticle = () => {
+    const particle = document.createElement('div');
+    particle.classList.add('particle');
+    
+    const size = Math.random() * 5 + 2;
+    const posX = Math.random() * window.innerWidth;
+    const duration = Math.random() * 10 + 10;
+    
+    particle.style.width = `${size}px`;
+    particle.style.height = `${size}px`;
+    particle.style.left = `${posX}px`;
+    particle.style.bottom = '0';
+    particle.style.animationDuration = `${duration}s`;
+    
+    document.body.appendChild(particle);
+    
+    setTimeout(() => {
+      particle.remove();
+    }, duration * 1000);
+  };
+  
+  setInterval(createParticle, 300);
+});
 });
